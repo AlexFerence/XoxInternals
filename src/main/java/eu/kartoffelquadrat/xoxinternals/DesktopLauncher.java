@@ -24,23 +24,6 @@ public class DesktopLauncher {
      * for demo purposes (how use the XoxController).
      */
     public static void playXox() {
-
-        XoxManagerImpl xoxManagerImpl = XoxManagerImpl.getInstance();
-
-        System.out.println("Welcome to the Xox.");
-        System.out.println("-------------------------");
-        System.out.println("Here is some feedback from the backend, simulation setup.");
-
-        // Print some game details:
-        // Players in seating order:
-        System.out.println("Serialized players: ");
-        System.out.println(xoxManagerImpl.getPlayers(42)[0]);
-        System.out.println(xoxManagerImpl.getPlayers(42)[1]);
-
-        // Board
-        System.out.println("Serialized initial board: " + xoxManagerImpl.getBoard(42));
-
-        // Ranking
-        System.out.println("Serialized ranking: " + xoxManagerImpl.getRanking(42));
+        System.out.println("Testing");
     }
 }
