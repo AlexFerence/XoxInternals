@@ -15,6 +15,7 @@ import java.util.*;
  */
 public class XoxManagerImpl implements XoxManager {
 
+    private static XoxManagerImpl singletonReference;
     private final XoxActionGenerator actionGenerator;
     private final ActionInterpreter actionInterpreter;
     private final HashMap<Long, XoxGame> games;
@@ -24,12 +25,25 @@ public class XoxManagerImpl implements XoxManager {
      * Private default constructor for singleton pattern. Initializes all required util classes and start a new game
      * with players "X" and "O".
      */
-    public XoxManagerImpl() {
+    private XoxManagerImpl() {
+
         actionGenerator = new XoxActionGenerator();
         actionInterpreter = new XoxActionInterpreter(actionGenerator, new XoxEndingAnalyzer());
         games = new LinkedHashMap<>();
         rankingGenerator = new XoxRankingGenerator();
         initializeSampleGame();
+    }
+
+    /**
+     * Singleton access method to obtain the controller instance. First call implicitly initializes a new game for
+     * players "X" and "O".
+     *
+     * @return unique singleton representative of this class.
+     */
+    public static XoxManagerImpl getInstance() {
+        if (singletonReference == null)
+            singletonReference = new XoxManagerImpl();
+        return singletonReference;
     }
 
     @Override
